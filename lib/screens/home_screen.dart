@@ -35,7 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _loadWasteData() async {
     final now = DateTime.now();
     final startOfDay = DateTime(now.year, now.month, now.day);
-    final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
+    final startOfWeek = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    ).subtract(Duration(days: now.weekday - 1));
 
     final snapshot = await _firestore
         .collection('waste')
